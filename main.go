@@ -18,7 +18,7 @@ func main() {
 	commandName := os.Args[2]
 	args := os.Args[3:]
 
-	command, exist := command.GetCommands()[commandName]
+	command, exist := command.Commands()[commandName]
 	if !exist {
 		fmt.Printf("Command \"%s\" Not Found", commandName)
 		return

@@ -5,11 +5,15 @@ type Command struct {
 	Callback func(args []string) error
 }
 
-func GetCommands() map[string]Command {
+func Commands() map[string]Command {
 	return map[string]Command{
 		"add": {
 			Name:     "add",
 			Callback: handlerAdd,
+		},
+		"list": {
+			Name:     "list",
+			Callback: handlerList,
 		},
 	}
 }
