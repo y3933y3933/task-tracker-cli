@@ -23,5 +23,13 @@ func Commands() map[string]Command {
 			Name:     "update",
 			Callback: handlerUpdate,
 		},
+		"mark-in-progress": {
+			Name:     "mark-in-progress",
+			Callback: handlerMarkInProgress,
+		},
+		"mark-done": {
+			Name:     "mark-done",
+			Callback: handlerMarkDone,
+		},
 	}
 }
