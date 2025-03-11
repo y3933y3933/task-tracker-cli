@@ -11,7 +11,9 @@ const filename = "tasks.json"
 func LoadTask() ([]Task, error) {
 	dat, err := os.ReadFile(filename)
 	if err != nil {
-		fmt.Printf("讀取 %s 失敗: %v\n", filename, err)
+		if os.IsNotExist(err) {
+			return []Task{}, nil
+		}
 		return []Task{}, err
 	}
 
@@ -23,5 +25,17 @@ func LoadTask() ([]Task, error) {
 		return []Task{}, err
 	}
 	return tasks, nil
+
+}
+
+func SaveTask(tasks []Task) error {
+	f, err := os.Create(filename)
+	if err != nil {
+		return err
+	}
+	defer f.Close()
+
+	encoder := json.NewEncoder(f)
+	return encoder.Encode(tasks)
 
 }
