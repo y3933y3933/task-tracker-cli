@@ -3,6 +3,7 @@ package command
 import (
 	"errors"
 	"fmt"
+	"slices"
 
 	"github.com/y3933y3933/task-tracker-cli/task"
 )
@@ -22,10 +23,10 @@ func handlerDelete(args []string) error {
 		fmt.Print("No tasks found")
 	}
 
-	filteredTasks := task.Filter(tasks, func(t task.Task) bool {
+	tasks = slices.DeleteFunc(tasks, func(t task.Task) bool {
 		return t.ID.String() == id
 	})
 
-	return task.SaveTask(filteredTasks)
+	return task.SaveTask(tasks)
 
 }
