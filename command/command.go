@@ -15,5 +15,9 @@ func Commands() map[string]Command {
 			Name:     "list",
 			Callback: handlerList,
 		},
+		"delete": {
+			Name:     "delete",
+			Callback: handlerDelete,
+		},
 	}
 }
