@@ -21,6 +21,7 @@ func handlerDelete(args []string) error {
 
 	if len(tasks) == 0 {
 		fmt.Print("No tasks found")
+		return nil
 	}
 
 	tasks = slices.DeleteFunc(tasks, func(t task.Task) bool {
